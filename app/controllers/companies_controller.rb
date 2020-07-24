@@ -30,6 +30,15 @@ class CompaniesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    if @company.destroy
+      redirect_to companies_path, notice: "Successfully deleted #{@company.name}."
+    else
+      flash[:error] = "#{@company.errors.full_messages.join(', ')}"
+      redirect_to company_path(@company)
+    end
   end  
 
   private

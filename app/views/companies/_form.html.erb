@@ -1,4 +1,11 @@
 <div class="py-5">
+  <% if @company.errors.any? %>
+    <ul class="alert alert-danger" id="alert_message">
+      <% @company.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <%= form_for @company do |f| %>
 
     <div class="row my-lg-3">
@@ -53,7 +60,7 @@
       </div>
       <div class="col-lg offset-lg-1">
         <div class="form-group">
-          <%= f.text_field :email, class: "form-control", placeholder: "hello@company.com"%>
+          <%= f.text_field :email, class: "form-control", placeholder: "hello@getmainstreet.com"%>
         </div>
       </div>
     </div>
